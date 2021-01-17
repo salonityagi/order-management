@@ -1,0 +1,17 @@
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:orderdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+  
+  jpa:
+     database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+     console:
+        enabled: true
+
+rest:
+ url: http://localhost:8888/dev/products
+ token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDk5NzUyMTAsInVzZXJfbmFtZSI6ImthbmRhbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiYTc5YTZkOTctYjY2Ny00Njc4LTkzNWItYzlhYmM0ZjQyOWVhIiwiY2xpZW50X2lkIjoiY2xpZW50aWQiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.SG5KqQZOfJqGkxeips21WXDTFnQPzIsrXfqFFXMTuUTk-mCpaCb0GDIjdioic5agg_MQ6F61RrSfgnsYjDGUkPSr9nNOpm7-9HZJZcBzhiOfnRw9AvskDCYYI1T-FwyJe0o3wyjzTIL25Mh6_KW91chBZ5hrQT_3UEnLFJhmL_0JhSr1SYKkqKySv5fZjqp_shVCzBdjEdBjRsusOkv1AxsE11OPkxmeEZlzsjvL9sEUNu7xi5zqmxpMZTom_y2ztuL9hfZyrAye489vQVME2Q2HWvxL0HphNzmCq4S7SbN66NHdnyiF4FoTzKJJTUO9gekdVeTmXgh1E5xuNHqeOA

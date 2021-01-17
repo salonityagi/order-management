@@ -1,0 +1,72 @@
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:h2:mem:orderdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+  
+  jpa:
+     database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+     console:
+        enabled: true
+
+rest:
+ url: http://localhost:8085/products
+ token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTEwOTQzMzcsInVzZXJfbmFtZSI6InR5YWdpIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJiNjcxYzVjZi03ZTRkLTQ1MGYtYWM3Ny0xOGYzNjQwNjVkMzgiLCJjbGllbnRfaWQiOiJjbGllbnRpZCIsInNjb3BlIjpbInJlYWQiXX0.Fe9j8wbcDmetaEyf-SUVkR7-r_oHBFePQZafrU-0H4U7PPmZbpJUZ7Gv3bJDQVFrO1jBtEse0CAF0y5BTKxbLTj-GW-l7RaJuD6YSchmhl2R08V243fRM2EH3x6UMKpPeu88l5Q-JNC86wUDRzzHXnjSkE5fAF56D6xqtKq51kI7RJSxzoCw-rIC0sGw-_KafpgYMVgsplvsNlS-u-xfMAYSZ6WlfBmlQ-rtOXmykB-N1qyq6x8U5VywGj_A2azQjfyY8WR-CuKlI3oSZnI_pMOeVqGDy-4s9vzWMKP183g-5o5pWkgkjNXD0DggeroXJ-uNKjonb5qFDFhA0sKVBA
+
+---
+spring:
+ profiles: dev
+
+ datasource:
+    url: jdbc:h2:mem:orderdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+  
+ jpa:
+     database-platform: org.hibernate.dialect.H2Dialect
+ h2:
+     console:
+        enabled: true
+
+rest:
+ url: http://localhost:8888/dev/products
+ token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTEwOTQzMzcsInVzZXJfbmFtZSI6InR5YWdpIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJiNjcxYzVjZi03ZTRkLTQ1MGYtYWM3Ny0xOGYzNjQwNjVkMzgiLCJjbGllbnRfaWQiOiJjbGllbnRpZCIsInNjb3BlIjpbInJlYWQiXX0.Fe9j8wbcDmetaEyf-SUVkR7-r_oHBFePQZafrU-0H4U7PPmZbpJUZ7Gv3bJDQVFrO1jBtEse0CAF0y5BTKxbLTj-GW-l7RaJuD6YSchmhl2R08V243fRM2EH3x6UMKpPeu88l5Q-JNC86wUDRzzHXnjSkE5fAF56D6xqtKq51kI7RJSxzoCw-rIC0sGw-_KafpgYMVgsplvsNlS-u-xfMAYSZ6WlfBmlQ-rtOXmykB-N1qyq6x8U5VywGj_A2azQjfyY8WR-CuKlI3oSZnI_pMOeVqGDy-4s9vzWMKP183g-5o5pWkgkjNXD0DggeroXJ-uNKjonb5qFDFhA0sKVBA
+
+server:
+ port: 8085
+ servlet:
+   context-path: /dev
+
+
+
+---
+spring:
+ profiles: prod
+
+ datasource:
+    url: jdbc:h2:mem:orderdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+  
+ jpa:
+     database-platform: org.hibernate.dialect.H2Dialect
+ h2:
+     console:
+        enabled: true
+
+rest:
+ url: http://localhost:8085/products
+ token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTEwOTQzMzcsInVzZXJfbmFtZSI6InR5YWdpIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJiNjcxYzVjZi03ZTRkLTQ1MGYtYWM3Ny0xOGYzNjQwNjVkMzgiLCJjbGllbnRfaWQiOiJjbGllbnRpZCIsInNjb3BlIjpbInJlYWQiXX0.Fe9j8wbcDmetaEyf-SUVkR7-r_oHBFePQZafrU-0H4U7PPmZbpJUZ7Gv3bJDQVFrO1jBtEse0CAF0y5BTKxbLTj-GW-l7RaJuD6YSchmhl2R08V243fRM2EH3x6UMKpPeu88l5Q-JNC86wUDRzzHXnjSkE5fAF56D6xqtKq51kI7RJSxzoCw-rIC0sGw-_KafpgYMVgsplvsNlS-u-xfMAYSZ6WlfBmlQ-rtOXmykB-N1qyq6x8U5VywGj_A2azQjfyY8WR-CuKlI3oSZnI_pMOeVqGDy-4s9vzWMKP183g-5o5pWkgkjNXD0DggeroXJ-uNKjonb5qFDFhA0sKVBA
+
+
+server:
+ port: 8086
+ servlet:
+   context-path: /
