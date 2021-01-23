@@ -26,7 +26,7 @@ import com.sl.ms.ordermanagement.repo.OrderRepo;
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RepositoryTests {
+public class OrderRepositoryTest {
 
 	@Autowired
 	OrderRepo orderRepo;

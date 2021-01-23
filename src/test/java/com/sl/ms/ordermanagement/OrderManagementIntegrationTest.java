@@ -5,15 +5,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.File;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.sl.ms.ordermanagement.service.OrderService;
+import com.sl.ms.ordermanagement.service.ServiceCall;
+import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
@@ -36,7 +45,7 @@ import com.sl.ms.ordermanagement.repo.OrderRepo;
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-public class OrderManagementTest {
+public class OrderManagementIntegrationTest {
 
 	private MockMvc mockMvc;
 	@Autowired
@@ -44,6 +53,12 @@ public class OrderManagementTest {
 
 	@Autowired
 	OrderRepo orderRepo;
+
+	@Mock
+	ServiceCall serviceCall;
+
+	@SpyBean
+	OrderService orderService;
 
 	HttpHeaders httpHeaders = new HttpHeaders();
 	File file;
@@ -56,7 +71,8 @@ public class OrderManagementTest {
 	@BeforeEach
 	public void setup() throws Exception {
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
-
+		//Mockito.mock(ServiceCall.class);
+		//Mockito.when(serviceCall.callInventoryMgmt(Mockito.anyInt())).thenReturn(new JSONObject(new HashMap<String, String>()));
 		file = Paths.get("src", "test", "resources", "orders.json").toFile();
 	}
 
@@ -68,7 +84,7 @@ public class OrderManagementTest {
 	 */
 
 	@AfterEach
-	public void dropDB() {
+	public void cleanup() {
 		System.out.println("after each test*****************");
 		// orderRepo.deleteAll();
 	}
@@ -79,6 +95,7 @@ public class OrderManagementTest {
 		OrderDto dto = new OrderDto();
 		dto.setName("Item1");
 		dto.setTotalAmount(120.98);
+		dto.setId(101);
 
 		byte[] iJosn = toJson(dto);
 		mockMvc.perform(MockMvcRequestBuilders.post("/orders/1").content(iJosn).headers(httpHeaders)
@@ -88,7 +105,7 @@ public class OrderManagementTest {
 	}
 
 	@Test
-	@DisplayName(value = "Test - Get Order")
+	@DisplayName(value = "Test - Get Order list")
 	public void getOrderTest() throws Exception {
 		OrderDto dto = new OrderDto();
 		dto.setName("Item1");
@@ -111,7 +128,7 @@ public class OrderManagementTest {
 	}
 
 	@Test
-	@DisplayName(value = "Test - List Orders")
+	@DisplayName(value = "Test - Get Orders")
 	public void getOrdersListTest() throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");

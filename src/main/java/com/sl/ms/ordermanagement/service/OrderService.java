@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import com.sl.ms.ordermanagement.dto.OrderDto;
 import com.sl.ms.ordermanagement.entity.Items;
 import com.sl.ms.ordermanagement.entity.Orders;
-import com.sl.ms.ordermanagement.exception.ItemNotfound;
-import com.sl.ms.ordermanagement.exception.OrderNotfound;
+import com.sl.ms.ordermanagement.exception.ItemNotFound;
+import com.sl.ms.ordermanagement.exception.OrderNotFound;
 import com.sl.ms.ordermanagement.exception.ServiceNotAvailable;
 import com.sl.ms.ordermanagement.logs.OrderMgmtLogger;
 import com.sl.ms.ordermanagement.repo.OrderRepo;
@@ -36,7 +36,7 @@ public class OrderService {
 
 		Object object = serviceCall.callInventoryMgmt(orderid);
 		if (object instanceof Exception)
-			throw new ItemNotfound();
+			throw new ItemNotFound();
 		else if(object.toString().contains("unavailable"))
 			throw new ServiceNotAvailable("Looks like service unavailable. Please try later.");
 		else if(object instanceof JSONObject) {
@@ -78,7 +78,7 @@ public class OrderService {
 			return order;
 		}
 		else
-			throw new OrderNotfound();
+			throw new OrderNotFound();
 	}
 
 	public List<Orders> getOrdersList() {

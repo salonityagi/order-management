@@ -37,7 +37,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler  {
 		return new ResponseEntity<>(error,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@ExceptionHandler(value= {ItemNotfound.class})
+	@ExceptionHandler(value= {ItemNotFound.class})
 	public ResponseEntity<Object> itemNotFoundExceptions(
 			Exception ex, WebRequest request) {
 		ErrorMessage error=new ErrorMessage();
