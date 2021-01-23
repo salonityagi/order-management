@@ -34,7 +34,7 @@ import com.sl.ms.ordermanagement.service.OrderService;
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ServiceTest {
+public class OrderServiceTest {
 
 	private MockMvc mockMvc;
 	
