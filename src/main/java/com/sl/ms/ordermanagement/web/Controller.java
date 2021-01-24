@@ -17,7 +17,7 @@ import com.sl.ms.ordermanagement.logs.OrderMgmtLogger;
 import com.sl.ms.ordermanagement.service.OrderService;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping(path = "/orders")
 public class Controller {
 	
 	OrderMgmtLogger logger=new OrderMgmtLogger();
